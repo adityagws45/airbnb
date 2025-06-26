@@ -1,64 +1,122 @@
-
 <% layout("/layouts/boilerplate") %>
-  <div class="row">
-    <div class="col-8 offset-2">
-        <br>
-    <h3> Create a New Listing</h3>
-    <form method="POST" action="/listings" novalidate class="needs-validation" enctype="multipart/form-data">
-        <div>
-            <label for="title" class="form-label">Title</label>
-            <input name="listing[title]" 
-            placeholder=" Add a catchy title"
-             type="text"
-            class="form-control"
-            required>
-            <div class="valid-feedback">Title looks good!</div>
-        </div>
-   
-        <br>
-        <div>
-            <label for="description" class="form-label">Description</label>
-            <textarea name="listing[description]"
-            class="form-control" 
-            required></textarea>
-            <div class="invalid-feedback"> Please enter short description</div>
+
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10">
+        <div class="card shadow-lg border-0" style="border-radius: 15px; margin-top: 2rem;">
+            <div class="card-header text-center" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 15px 15px 0 0;">
+                <h3 class="mb-0">🏖️ List Your Konkan Property</h3>
+                <p class="mb-0 mt-2 opacity-75">Share your coastal gem with fellow travelers</p>
             </div>
-        <br>
-    
-        <div>
-            <label for="image" class="form-label">Upload Listing Image </label>  
-           <input name="listing[image]"
-            type="file" class="form-control">
-            required
-           </div>
-        <br>
-    <div class="row">
-        <div class="col-md-4">
-            <label for="price" class="form-label">Price</label> 
-        <input name="listing[price]" placeholder="1200" 
-         class="form-control"
-         required>
-         <div class="invalid-feedback"> Price should be valid</div>
+            <div class="card-body p-4">
+                <form method="POST" action="/listings" novalidate class="needs-validation" enctype="multipart/form-data">
+                    <div class="mb-4">
+                        <label for="title" class="form-label fw-bold">Property Title</label>
+                        <input name="listing[title]" 
+                        placeholder="e.g., Cozy Beach House in Alibaug"
+                         type="text"
+                        class="form-control"
+                        required>
+                        <div class="valid-feedback">Great title!</div>
+                        <div class="invalid-feedback">Please provide a catchy title for your property.</div>
+                    </div>
+               
+                    <div class="mb-4">
+                        <label for="description" class="form-label fw-bold">Description</label>
+                        <textarea name="listing[description]"
+                        class="form-control" 
+                        rows="4"
+                        placeholder="Describe your property, nearby attractions, and what makes it special..."
+                        required></textarea>
+                        <div class="invalid-feedback">Please provide a detailed description.</div>
+                    </div>
+                
+                    <div class="mb-4">
+                        <label for="image" class="form-label fw-bold">Property Images</label>  
+                       <input name="listing[image]"
+                        type="file" 
+                        class="form-control"
+                        accept="image/*"
+                        required>
+                        <div class="form-text">Upload high-quality images of your property</div>
+                        <div class="invalid-feedback">Please upload at least one image.</div>
+                    </div>
+                
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <label for="price" class="form-label fw-bold">Price per Night (₹)</label> 
+                            <input name="listing[price]" 
+                            placeholder="2500" 
+                            type="number"
+                            min="0"
+                            class="form-control"
+                            required>
+                            <div class="invalid-feedback">Please enter a valid price.</div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="country" class="form-label fw-bold">State</label> 
+                            <input name="listing[country]" 
+                            placeholder="Maharashtra"
+                            value="Maharashtra"
+                            type="text"  
+                            class="form-control" 
+                            required>
+                            <div class="invalid-feedback">Please enter the state name.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="location" class="form-label fw-bold">Location</label> 
+                        <input name="listing[location]" 
+                        placeholder="e.g., Alibaug, Raigad District" 
+                        type="text"  
+                        class="form-control" 
+                        required>
+                        <div class="form-text">Include the city/village and district for better visibility</div>
+                        <div class="invalid-feedback">Please provide the location details.</div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button class="btn add-btn btn-lg px-5" type="submit">
+                            <i class="fa-solid fa-plus me-2"></i>List My Property
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
-        <br>
-        <div class="col-md-8">
-        <label for="country" class="form-label">Country</label> 
-        <input name="listing[country]" placeholder="india"
-         type="text"  class="form-control" required>
-         <div class="invalid-feedback">country name should be valid</div>
-        </div>
-    </div>
-        <br>
-        <div>
-            <label for="location" class="form-label">Location</label> 
-        <input name="listing[location]" placeholder="Kolkata,West Bengal" 
-        type="text"  class="form-control" required>
-        <div class="invalid-feedback">location name should be valid</div>
-        </div>
-        <br>
-        <button class="btn btn-dark add-btn" >Add</button>
-        <br><br>
-    </form>
     </div>
 </div>
-<!-- <script src="/js/script.js"></script> -->
+
+<style>
+    .card {
+        margin-bottom: 3rem;
+    }
+    
+    .form-label {
+        color: #555;
+        margin-bottom: 0.5rem;
+    }
+    
+    .form-control {
+        border-radius: 10px;
+        border: 2px solid #e1e5e9;
+        padding: 0.75rem 1rem;
+    }
+    
+    .form-control:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+    }
+    
+    .add-btn {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+        border: none !important;
+        border-radius: 25px !important;
+        font-weight: 600 !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    .add-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+</style>

@@ -1,17 +1,18 @@
-{ 
+{
   "engines": {
-     "node": "18.17.1"
+    "node": "18.17.1"
   },
-
-  "name": "major-project",
+  "name": "konkan-stay",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Discover authentic coastal stays in Konkan region of Maharashtra",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["konkan", "coastal", "stays", "maharashtra", "travel"],
+  "author": "Your Name",
   "license": "ISC",
   "dependencies": {
     "cloudinary": "^1.21.0",
@@ -30,5 +31,8 @@
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^8.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }

@@ -1,82 +1,140 @@
-
 <% layout("/layouts/boilerplate") %>
 
- <div class="row mt-3">
-     <div class="col-8 offset-2">
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10">
+        <div class="card shadow-lg border-0" style="border-radius: 15px; margin-top: 2rem;">
+            <div class="card-header text-center" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 15px 15px 0 0;">
+                <h3 class="mb-0">✏️ Edit Your Property</h3>
+                <p class="mb-0 mt-2 opacity-75">Update your listing details</p>
+            </div>
+            <div class="card-body p-4">
+                <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" 
+                    novalidate class="needs-validation"
+                    enctype="multipart/form-data">
+                    
+                    <div class="mb-4">
+                        <label for="title" class="form-label fw-bold">Property Title</label>
+                        <input name="listing[title]"
+                        value="<%= listing.title %>"
+                        type="text"
+                        class="form-control"
+                        required>
+                        <div class="valid-feedback">Title looks great!</div>
+                        <div class="invalid-feedback">Please provide a title for your property.</div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="description" class="form-label fw-bold">Description</label>
+                        <textarea name="listing[description]" 
+                        class="form-control" 
+                        rows="4"
+                        required><%= listing.description %></textarea>
+                        <div class="invalid-feedback">Please provide a description.</div>
+                    </div>
 
-   
- <h3> Edit your Listing</h3>
-    <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" 
-        novalidate class="needs-validation"
-        enctype="multipart/form-data">
-        <div>
-            <label for="title" class="form-label">Title</label>
-        <input name="listing[title]"
-        value="<%=listing.title %>"
-        type="text"
-        class="form-control"
-        required>
-        <div class="valid-feedback">Title looks good!</div>
-        <br>
-        <div>
-            <label for="description" class="form-label">Description</label>
-        <textarea name="listing[description]" 
-        class="form-control" required>
-        <%= listing.description %> </textarea>
-        <div class="invalid-feedback"> Please enter short description</div>
-       </div>
-        <br>
-
-        <div class="mb-3">
-            Original Listing Image <br>
-            <img src ="<%= originalImageUrl %>">
-        </div>
-
-        <div>
-            <label for="image" class="form-label"> Upload New Image</label>
-        <input name="listing[image]"
-         type="file" 
-         class="form-control"
-        >
-         <div class="invalid-feedback">Please enter valid link for image</div>
-        </div>
-        <br>
-         <div class="row">
-
-        <div class="col-md-4">
-            <label for="price" class="form-label">Price</label>
-        <input name="listing[price]" 
-        value="<%=listing.price%>" 
-        type="number"
-         class="form-control"
-         required>
-         <div class="invalid-feedback"> Price should be valid</div>
-        </div>
-        <br>
-        <div class="col-md-8">
-            <label for="country" class="form-label">Country</label>
-        <input name="listing[country]" 
-        value="<%=listing.country%>" 
-        type="text" class="form-control"
-        required>
-        <div class="invalid-feedback">country name should be valid</div>
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">Current Image</label>
+                        <div class="current-image-container mb-3">
+                            <img src="<%= originalImageUrl %>" class="img-fluid rounded" style="max-height: 200px; object-fit: cover;">
+                        </div>
+                        <label for="image" class="form-label fw-bold">Upload New Image (Optional)</label>
+                        <input name="listing[image]"
+                         type="file" 
+                         class="form-control"
+                         accept="image/*">
+                         <div class="form-text">Leave empty to keep current image</div>
+                    </div>
+                    
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <label for="price" class="form-label fw-bold">Price per Night (₹)</label>
+                            <input name="listing[price]" 
+                            value="<%= listing.price %>" 
+                            type="number"
+                            min="0"
+                             class="form-control"
+                             required>
+                             <div class="invalid-feedback">Please enter a valid price.</div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="country" class="form-label fw-bold">State</label>
+                            <input name="listing[country]" 
+                            value="<%= listing.country %>" 
+                            type="text" class="form-control"
+                            required>
+                            <div class="invalid-feedback">Please enter the state name.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="location" class="form-label fw-bold">Location</label>
+                        <input name="listing[location]" 
+                        value="<%= listing.location %>" 
+                        type="text" 
+                        class="form-control"
+                        required>
+                        <div class="invalid-feedback">Please provide the location details.</div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button class="btn edit-btn btn-lg px-5" type="submit">
+                            <i class="fa-solid fa-save me-2"></i>Update Property
+                        </button>
+                        <a href="/listings/<%= listing._id %>" class="btn btn-outline-secondary btn-lg px-5 ms-3">
+                            <i class="fa-solid fa-times me-2"></i>Cancel
+                        </a>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-        <br>
-        <div>
-            <label for="location" class="form-label">Location</label>
-        <input name="listing[location]" 
-        value="<%=listing.location %>" 
-        type="text" 
-        class="form-control"
-        required>
-        <div class="invalid-feedback">location name should be valid</div>
-        </div>
-        <br>
-        <button class="btn btn-dark edit-btn ">Edit</button>
-        <br><br>
-      
-    </form>
- </div>
- </div>
- <script src="/js/script.js"></script>
+</div>
+
+<style>
+    .card {
+        margin-bottom: 3rem;
+    }
+    
+    .form-label {
+        color: #555;
+        margin-bottom: 0.5rem;
+    }
+    
+    .form-control {
+        border-radius: 10px;
+        border: 2px solid #e1e5e9;
+        padding: 0.75rem 1rem;
+    }
+    
+    .form-control:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+    }
+    
+    .current-image-container {
+        text-align: center;
+        padding: 1rem;
+        background: #f8f9fa;
+        border-radius: 10px;
+    }
+    
+    .edit-btn {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+        border: none !important;
+        border-radius: 25px !important;
+        font-weight: 600 !important;
+        transition: all 0.3s ease !important;
+        color: white !important;
+    }
+    
+    .edit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+    
+    .btn-outline-secondary {
+        border-radius: 25px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+</style>

@@ -1,37 +1,90 @@
 <% layout("/layouts/boilerplate") %>
 
-<div class="row mt-3">
-    <h1 class="col-6 offset-3">SignUp on Wanderlust</h1>
-    <div class="col-6 offset-3">
-        <form action="/signup" method="POST" class="needs-validation" novalidate>
-            <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <input name="username" 
-                id="username"
-                 type="text"
-                class="form-control"
-                required>
-                <div class="valid-feedback"> Looks good!</div>
+<div class="row justify-content-center mt-5">
+    <div class="col-lg-5 col-md-7">
+        <div class="card shadow-lg border-0" style="border-radius: 20px;">
+            <div class="card-header text-center py-4" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 20px 20px 0 0;">
+                <h2 class="mb-2">🌊 Join Konkan Stay</h2>
+                <p class="mb-0 opacity-75">Start your coastal journey with us</p>
             </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input name="email" 
-                id="email"
-                 type="email"
-                class="form-control"
-                required>
-                
+            <div class="card-body p-5">
+                <form action="/signup" method="POST" class="needs-validation" novalidate>
+                    <div class="mb-4">
+                        <label for="username" class="form-label fw-bold">
+                            <i class="fa-solid fa-user me-2 text-primary"></i>Username
+                        </label>
+                        <input name="username" 
+                        id="username"
+                        type="text"
+                        class="form-control form-control-lg"
+                        placeholder="Choose a unique username"
+                        required>
+                        <div class="valid-feedback">Perfect username!</div>
+                        <div class="invalid-feedback">Please choose a username.</div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="email" class="form-label fw-bold">
+                            <i class="fa-solid fa-envelope me-2 text-primary"></i>Email Address
+                        </label>
+                        <input name="email" 
+                        id="email"
+                        type="email"
+                        class="form-control form-control-lg"
+                        placeholder="your.email@example.com"
+                        required>
+                        <div class="valid-feedback">Great email address!</div>
+                        <div class="invalid-feedback">Please provide a valid email address.</div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="password" class="form-label fw-bold">
+                            <i class="fa-solid fa-lock me-2 text-primary"></i>Password
+                        </label>
+                        <input name="password" 
+                        id="password"
+                        type="password"
+                        class="form-control form-control-lg"
+                        placeholder="Create a strong password"
+                        required>
+                        <div class="invalid-feedback">Please create a password.</div>
+                    </div>
+                    
+                    <div class="d-grid mb-4">
+                        <button class="btn btn-lg" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 25px; font-weight: 600;">
+                            <i class="fa-solid fa-user-plus me-2"></i>Create Account
+                        </button>
+                    </div>
+                    
+                    <div class="text-center">
+                        <p class="text-muted">Already have an account? 
+                            <a href="/login" class="text-decoration-none fw-bold" style="color: #667eea;">Sign In</a>
+                        </p>
+                    </div>
+                </form>
             </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input name="password" 
-                id="password"
-                type="password"
-                class="form-control"
-                required>
-                
-            </div>
-            <button class="btn btn-success">SignUp</button>
-        </form>
+        </div>
     </div>
 </div>
+
+<style>
+    .form-control {
+        border-radius: 15px;
+        border: 2px solid #e1e5e9;
+        transition: all 0.3s ease;
+    }
+    
+    .form-control:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+    }
+    
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+    
+    .card {
+        margin-bottom: 3rem;
+    }
+</style>

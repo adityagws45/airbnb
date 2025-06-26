@@ -1,131 +1,173 @@
 <% layout("/layouts/boilerplate") %>
 
 <style>
-    .filter{
-        margin-top:1rem ;
+    .hero-section {
+        background: linear-gradient(rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8)), 
+                    url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3') center/cover;
+        color: white;
+        padding: 4rem 0;
         text-align: center;
-        margin-right: 2rem;
-        opacity: 0.7;
+        margin-bottom: 2rem;
+        border-radius: 0 0 30px 30px;
     }
-   #filters{
-    display:flex;
-    flex-wrap: wrap;
-    align-items: center;
-    /* margin-left: 2rem; */
-    display: flex;
-    align-items: center;
-   }
-  
-   .filter:hover{
-    opacity: 1;
-    cursor:pointer;
-   }
 
-   .filter p {
-    font-size: 0.8rem;
-   }
+    .hero-title {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
 
-   .tax-info
-   {
-     display: none;
-   }
+    .hero-subtitle {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+    }
 
-   .tax-toggle
-   {
-        border: 1px solid black;
-        border-radius: 1rem;
-        height: 3.25rem;
-        padding: 1rem ;
-   }
+    .stats-container {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        margin-top: 2rem;
+    }
 
+    .stat-item {
+        text-align: center;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #ffd700;
+    }
+
+    .stat-label {
+        font-size: 0.9rem;
+        opacity: 0.8;
+    }
+
+    @media (max-width: 768px) {
+        .hero-title {
+            font-size: 2rem;
+        }
+        
+        .stats-container {
+            flex-direction: column;
+            gap: 1rem;
+        }
+    }
 </style>
 
-    <div id ="filters">
-        <div class="filter">
-         <div> <i class="fa-solid fa-fire"></i></div>
-          <p>Trending</p>
+<!-- Hero Section -->
+<div class="hero-section">
+    <div class="container">
+        <h1 class="hero-title">🌊 Welcome to Konkan Stay</h1>
+        <p class="hero-subtitle">Discover authentic coastal experiences along Maharashtra's pristine coastline</p>
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number"><%= allListings.length %></div>
+                <div class="stat-label">Coastal Properties</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Beach Destinations</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Happy Travelers</div>
+            </div>
         </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-bed"></i></div>
-             <p>Rooms</p>
-           </div>
-           <div class="filter">
-            <div> <i class="fa-solid fa-mountain-city"></i></div>
-             <p>Iconic Cities</p>
-           </div>
-           <div class="filter">
-               <div><i class="fa-solid fa-mountain"></i></div>
-                <p>Mountains</p>
-              </div>
-              <div class="filter">
-                <div><i class="fa-brands fa-fort-awesome"></i></div>
-                 <p>Castles</p>
-               </div>
-               <div class="filter">
-                <div><i class="fa-solid fa-person-swimming"></i></div>
-                 <p>Amazing Pools</p>
-               </div>
-               <div class="filter">
-                <div> <i class="fa-solid fa-campground"></i></div>
-                 <p>Camping</p>
-               </div>
-               <div class="filter">
-                   <div><i class="fa-solid fa-cow"></i></div>
-                    <p>Farms</p>
-                  </div>
-                  <div class="filter">
-                    <div><i class="fa-solid fa-snowflake"></i></div>
-                     <p>Arctic</p>
-                  </div>
-                  <div class="filter">
-                    <div><i class="fa-solid fa-sailboat"></i></div>
-                     <p>Boats</p>
-                   </div>
-                   
-                
-                  <div class="tax-toggle">
-                  <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                    <label class="form-check-label" for="flexSwitchCheckDefault">Display total after taxes </label>
-                  </div>
-                </div>
     </div>
-    <div class="row  row-cols-lg-4  row-cols-md-3 row-cols-sm-1 mt-3">
-        <% for (let listing of allListings) { %>
+</div>
+
+<div id="filters">
+    <div class="filter">
+        <div><i class="fa-solid fa-umbrella-beach"></i></div>
+        <p>Beach Houses</p>
+    </div>
+    <div class="filter">
+        <div><i class="fa-solid fa-home"></i></div>
+        <p>Homestays</p>
+    </div>
+    <div class="filter">
+        <div><i class="fa-solid fa-mountain-city"></i></div>
+        <p>Hill Stations</p>
+    </div>
+    <div class="filter">
+        <div><i class="fa-solid fa-fort-awesome"></i></div>
+        <p>Heritage Stays</p>
+    </div>
+    <div class="filter">
+        <div><i class="fa-solid fa-fish"></i></div>
+        <p>Fishing Villages</p>
+    </div>
+    <div class="filter">
+        <div><i class="fa-solid fa-person-swimming"></i></div>
+        <p>Resorts</p>
+    </div>
+    <div class="filter">
+        <div><i class="fa-solid fa-campground"></i></div>
+        <p>Beach Camping</p>
+    </div>
+    <div class="filter">
+        <div><i class="fa-solid fa-seedling"></i></div>
+        <p>Eco Stays</p>
+    </div>
+    <div class="filter">
+        <div><i class="fa-solid fa-ship"></i></div>
+        <p>Coastal Views</p>
+    </div>
+    <div class="filter">
+        <div><i class="fa-solid fa-utensils"></i></div>
+        <p>Food Experiences</p>
+    </div>
+    
+    <div class="tax-toggle">
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Show total with taxes</label>
+        </div>
+    </div>
+</div>
+
+<div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1 g-4">
+    <% for (let listing of allListings) { %>
+        <div class="col">
             <a href="/listings/<%= listing._id %>" class="listing-link">
-                <div class="card col listing-card">
-                    <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_image" style="height: 20rem">
+                <div class="card listing-card h-100">
+                    <img src="<%= listing.image.url %>" class="card-img-top" alt="<%= listing.title %>">
                     <div class="card-img-overlay"></div>
-                    <div class="card-body">
-                        <p class="card-text">
-                            <b><%= listing.title %></b>
-                            <br>
-                            <% if (listing.price !== null && typeof listing.price !== 'undefined') { %>
-                                &#8377 <%= listing.price.toLocaleString("en-IN") %>/night
-                                <i class="tax-info"> &nbsp; &nbsp; +18% GST</i>
-                            <% } else { %>
-                                Price information not available
-                            <% } %>
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title"><%= listing.title %></h5>
+                        <p class="card-text text-muted mb-2">
+                            <i class="fa-solid fa-location-dot"></i> <%= listing.location %>
                         </p>
+                        <div class="mt-auto">
+                            <% if (listing.price !== null && typeof listing.price !== 'undefined') { %>
+                                <span class="price-tag">₹<%= listing.price.toLocaleString("en-IN") %></span>
+                                <span class="text-muted">/night</span>
+                                <div class="tax-info text-muted small">+18% GST</div>
+                            <% } else { %>
+                                <span class="text-muted">Price on request</span>
+                            <% } %>
+                        </div>
                     </div>
                 </div>
             </a>
-        <% } %>
-    </div>
+        </div>
+    <% } %>
+</div>
+
 <script>
     let taxSwitch = document.getElementById("flexSwitchCheckDefault");
-    taxSwitch.addEventListener("click",()=>
-    {
-         let taxInfo= document.getElementsByClassName("tax-info");
-         for(info of taxInfo){
-            if( info.style.display != "inline")
-            {
-            info.style.display = "inline";
+    taxSwitch.addEventListener("click", () => {
+        let taxInfo = document.getElementsByClassName("tax-info");
+        for(info of taxInfo) {
+            if(info.style.display != "block") {
+                info.style.display = "block";
+            } else {
+                info.style.display = "none";
             }
-            else{
-                info.style.display = "none"
-            }
-         }
+        }
     });
 </script>
-

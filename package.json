@@ -1,36 +1,24 @@
 {
-  "engines": {
-    "node": "18.17.1"
-  },
   "name": "konkan-stay",
   "version": "1.0.0",
-  "description": "Discover authentic coastal stays in Konkan region of Maharashtra",
-  "main": "app.js",
+  "description": "A homestay booking platform for the Konkan region of India",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js",
-    "dev": "nodemon app.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "seed": "node utils/seedData.js"
   },
-  "keywords": ["konkan", "coastal", "stays", "maharashtra", "travel"],
-  "author": "Your Name",
-  "license": "ISC",
+  "keywords": ["homestay", "booking", "konkan", "travel"],
+  "author": "IT Student",
+  "license": "MIT",
   "dependencies": {
-    "cloudinary": "^1.21.0",
-    "connect-flash": "^0.1.1",
-    "connect-mongo": "^5.1.0",
-    "dotenv": "^16.4.1",
-    "ejs": "^3.1.9",
-    "ejs-mate": "^4.0.0",
     "express": "^4.18.2",
-    "express-session": "^1.17.3",
-    "joi": "^17.11.0",
+    "mongoose": "^7.5.0",
+    "ejs": "^3.1.9",
     "method-override": "^3.0.0",
-    "mongoose": "^8.0.3",
-    "multer": "^1.4.5-lts.1",
-    "multer-storage-cloudinary": "^4.0.0",
-    "passport": "^0.7.0",
-    "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^8.0.0"
+    "express-session": "^1.17.3",
+    "connect-flash": "^0.1.1",
+    "dotenv": "^16.3.1"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
